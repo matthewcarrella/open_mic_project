@@ -224,7 +224,7 @@ async function signUpForSlot(date_time) {
 			artist: userName,
 			time: timeStamp,
 			testthing: "it worked",
-			uid: "liwQwQnrA3donv9n6EiM"
+			uid: artistData.id
 
 		});
 	} catch (error) {
@@ -259,7 +259,7 @@ async function fetchArtistData() {
     const docRef = doc(collectionRef, userId);
     const docSnap = await getDoc(docRef);
      if (docSnap.exists()) {
-        setArtistData(docSnap.data());
+        setArtistData({id: docSnap.id, ...docSnap.data()});
         console.log('ARTIST DATA IS');
         console.log(docSnap.data());
       } else {
