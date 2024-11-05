@@ -157,7 +157,7 @@ const Artist = ({userId}) => {
         console.log(doc_data.uid);
         const formatTime = doc_data.time.toDate();
         const reactFormat = new Date(formatTime);
-        documents.push({id: doc.id, artist: doc_data.artist, time: reactFormat, uid: doc_data.uid, test: "hard coded"});
+        documents.push({id: doc.id, artist: doc_data.artist, time: reactFormat, uid: doc_data.uid});
       }); 
         setSlots(documents);
 

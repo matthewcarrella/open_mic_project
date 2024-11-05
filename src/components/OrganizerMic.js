@@ -38,15 +38,15 @@ const OrganizerMic = ({micData}) => {
 
    async function fetchSelectedEvent() {
     if (selectedEvent) {
-    console.log('FETCHING DATA FOR EVENT');
+
     const collectionRef = collection(db, 'mics', micData.id, 'events');
 
     const docRef = doc(collectionRef, selectedEvent);
     const docSnap = await getDoc(docRef);
-    console.log("AWAITING DOCSNAP");
+  
     if (docSnap.exists()){
      
-      console.log("GOT EVENT DATA");
+
       setSelectedEventData({id: docSnap.id, ...docSnap.data()});
       
     } else {
@@ -63,12 +63,10 @@ const OrganizerMic = ({micData}) => {
     const result = [];
     const intervalMinutes = 20;
     let currentDate = new Date(startDate.toDate());
-    console.log("STARTING AT");
-    console.log(currentDate);
+
     let endDate = new Date(currentDate);
   endDate.setHours(endDate.getHours() + 2);
-  console.log("ENDING AT");
-  console.log(endDate);
+
     while (currentDate <= endDate) {
     
       const nextDate = currentDate;
@@ -230,6 +228,11 @@ useEffect(() => {
   
 
 },[selectedEvent]);
+
+
+useEffect(() => {
+  updateTimes();
+}, [slots]);
 
  return (
   <div>
