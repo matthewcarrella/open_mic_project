@@ -211,27 +211,39 @@ const Artist = ({userId}) => {
 async function signUpForSlot(date_time) {
 
 	const userName = artistData.name;
-
-		try {
+	const docRef =  doc(db, 'mics', selected, 'events', selectedEventId, 'slots', artistData.id);
+	const docSnap = await getDoc(docRef);
+     if (docSnap.exists()) {
+       console.log("ALREADY SIGNED UP!");
+      } else {
+        try {
 		date_time.setSeconds(0);
 		date_time.setMilliseconds(0);
 		const timeStamp = Timestamp.fromDate(date_time);
 		timeStamp.nanoseconds = 0;
 		console.log("mic is" + selected);
 		console.log("event is " + selectedEventId);
+
 		
-		const docRef = await addDoc(collection(db, "mics", selected, "events", selectedEventId, "slots"), {
+		const slotData = {
 			artist: userName,
 			time: timeStamp,
-			testthing: "it worked",
 			uid: artistData.id
 
-		});
+		};
+		setDoc(docRef, slotData);
+		
+		
 	} catch (error) {
 		console.log("there was an error" + error);
 		
 
 	}
+      }
+   
+
+
+		
 	}
 
 	async function cancelSlot(timeId) {
@@ -330,7 +342,7 @@ useEffect(() => {
 		<br/>
 			<EventsList selectedMic={selectedMic} selectedEventId={selectedEventId} handleSelectEvent={handleSelectEvent} events={events} handleUnselect={() => setSelected(null)}/>
 			<br/><br/>
-			<TimesList times={times} signUp={signUpForSlot} userId="liwQwQnrA3donv9n6EiM" cancelSlot={cancelSlot}/>
+			<TimesList times={times} signUp={signUpForSlot} userId={artistData.id} cancelSlot={cancelSlot}/>
 		</div>
 		)
 }
