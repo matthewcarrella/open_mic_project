@@ -106,6 +106,9 @@ const OrganizerMic = ({micData}) => {
         const reactFormat = new Date(formatTime);
         documents.push({id: doc.id, artist: doc_data.artist, time: reactFormat, uid: doc_data.uid, test: "hard coded"});
       }); 
+
+      console.log("SLOT DOCUMENTS ARE");
+      console.log(documents);
         setSlots(documents);
 
         
@@ -122,10 +125,11 @@ const OrganizerMic = ({micData}) => {
 
 
       function updateTimes() {
-        
+        console.log('UPDATING THE TIMEEEES');
 
   slots.forEach((slot, sindex) => {
-      
+      console.log("HERE IS A SLOT");
+      console.log(slot);
 
       times.forEach((time, tindex) => {
         
@@ -133,8 +137,13 @@ const OrganizerMic = ({micData}) => {
         time.time.setSeconds(0);
         slot.time.setMilliseconds(0);
         time.time.setMilliseconds(0);
+        console.log("COMPARING");
+        console.log(slot.time.getTime());
+        console.log(time.time.getTime());
+
 
         if (slot.time.getTime()===time.time.getTime()) {
+          console.log('THEY MATCH');
         
           const copyTimes = times;
           copyTimes[tindex] = {time: time.time, id: slot.id, artist: slot.artist, uid: slot.uid};
