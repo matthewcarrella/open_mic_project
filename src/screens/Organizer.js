@@ -112,7 +112,7 @@ const Organizer = ({organizerId}) => {
 
   	fetchOrganizerData();
   	fetchOrganizerMic();
-  }, [micCreated]);
+  }, [micCreated, organizerMic]);
 
 
   async function fetchOrganizerMic() {
@@ -123,7 +123,7 @@ const Organizer = ({organizerId}) => {
       .then((docSnap) => {
         if (docSnap.exists()) {
  
-          setOrganizerMic(docSnap.data());
+          setOrganizerMic({id: docSnap.id, ...docSnap.data()});
         } else {
           console.log('No such document!');
         }
