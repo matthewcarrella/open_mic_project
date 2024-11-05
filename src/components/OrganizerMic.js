@@ -217,6 +217,7 @@ const OrganizerMic = ({micData}) => {
 
  useEffect(() => {
   if (selectedEventData) {
+    setTimes([]);
     createDateTimeArray(selectedEventData.begins);
       fetchSlotData();
     }
