@@ -29,6 +29,8 @@ const EventsListItem = ({event, handleSelectEvent, selectedEventId}) => {
 				<Row>
 					<Col>
 							<h3>{beginsDate.toLocaleString('en-US', {
+	month: 'short',
+    day: 'numeric',
     hour: 'numeric',
     minute: 'numeric',
   })}</h3>

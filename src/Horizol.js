@@ -18,7 +18,7 @@ const Horizol = ({mics, selected, selectedMic, handleSelect}) => {
       {
         breakpoint: 768, // Adjust this breakpoint as needed
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
         }
       },
