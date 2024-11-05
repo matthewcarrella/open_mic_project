@@ -10,7 +10,7 @@ const Navigation = () => {
 
           <Nav className="me-auto">
             <Nav.Link href="/">Artist</Nav.Link>
-<Nav.Link href="/organizer">Organizer</Nav.Link>
+            <Nav.Link href="organizer">Organizer</Nav.Link>
             <Nav.Link href="about">About</Nav.Link>
           </Nav>
         </Container>
