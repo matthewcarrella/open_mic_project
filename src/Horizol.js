@@ -14,6 +14,22 @@ const Horizol = ({mics, selected, selectedMic, handleSelect}) => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 768, // Adjust this breakpoint as needed
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 480, // Adjust this breakpoint as needed
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      }
+    ]
   };
 
        const cards = mics.map(mic => <MicsListItem key={mic.id} mic={mic} selectedId={selected} handleSelect={handleSelect}/ >);
